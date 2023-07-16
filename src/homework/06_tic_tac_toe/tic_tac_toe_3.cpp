@@ -8,79 +8,54 @@ Win by column if and return true if
 else
 false
 */
-
-bool TicTacToe3::check_column_win()
+bool TicTacToe3::check_diagonal_win()
 {
-    for (int i = 0; i < 3; i++)
-    {
-        if ((pegs[i] == pegs[i+3]) && (pegs[i+3] == pegs[i+6]) && (pegs[i] != " "))
+if(pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " " ||
+        pegs[2] == pegs[4] && pegs[4] == pegs[6] && pegs[2] != " ")
         {
             return true;
         }
-    }
 
-    return false;
+        return false;
 }
+
 
 /*
 class function check_row_win
-@@ -20,7 +31,18 @@ Win by row if
+Win by row if
+0, 1, 2 are equal
+3,4,5 are equal
 6,7,8 are equal
 */
 
 bool TicTacToe3::check_row_win()
 {
-    for (int i = 0; i < 9; i+=3)
+    for(int i=0; i < 9; i+=3)
     {
-        if ((pegs[i] == pegs[i+1]) && (pegs[i+1] == pegs[i+2]) && (pegs[i] != " "))
+        if(pegs[i] == pegs[i+1] && pegs[i+1] == pegs[i+2] && pegs[i] != " ")
         {
             return true;
         }
     }
-
     return false;
 }
+
 
 /*
 class function check_diagonal_win
-@@ -30,3 +52,17 @@ Win diagonally
+Win diagonally
+0 1 2
+3 4 5
 6 7 8
 */
-
-bool TicTacToe3::check_diagonal_win()
+bool TicTacToe3::check_column_win()
 {
-    if ((pegs[0] == pegs[4]) && (pegs[4] == pegs[8]) && (pegs[0] != " "))
+for(int i=0; i < 3; i++)
     {
-        return true;
+        if(pegs[i] == pegs[i+3] && pegs[i+3] == pegs[i+6] && pegs[i+6] != " ")
+        {
+            return true;
+        }
     }
-    else if ((pegs[6] == pegs[4]) && (pegs[4] == pegs[2]) && (pegs[6] != " "))
-    {
-        return true;
-    }
-
-    return false;
+return false;
 }
- 21 changes: 20 additions & 1 deletion21  
-src/homework/06_tic_tac_toe/tic_tac_toe_3.h
-@@ -1 +1,20 @@
-//h
-//h
-#include "tic_tac_toe.h"
-
-#ifndef TIC_TAC_TOE_3_H
-#define TIC_TAC_TOE_3_H
-
-
-class TicTacToe3 : public TicTacToe
-{
-public:
-    TicTacToe3(): TicTacToe(3){};
-
-private:
-    bool check_column_win() override;
-    bool check_row_win() override;
-    bool check_diagonal_win() override;
-
-};
-
-#endif
